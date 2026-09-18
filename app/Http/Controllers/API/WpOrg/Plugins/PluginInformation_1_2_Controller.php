@@ -57,10 +57,10 @@ class PluginInformation_1_2_Controller extends Controller
             $resource = Plugins\ClosedPluginResponse::from($plugin);
             $status = 404;
         } else {
-            $resource = Plugins\PluginResponse::from(Plugins\PluginResponse::fromPlugin(
+            $resource = Plugins\PluginResponse::fromModel(
                 $plugin,
                 Plugins\PluginFields::resolve($req->fields, information: true),
-            ));
+            );
             $status = 200;
         }
 

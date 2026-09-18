@@ -53,7 +53,7 @@ class QueryPluginsService
             ->limit($perPage)
             ->get()
             ->unique('slug')
-            ->map(fn($plugin) => Plugins\PluginResponse::from(Plugins\PluginResponse::fromPlugin($plugin, $fields)));
+            ->map(fn($plugin) => Plugins\PluginResponse::fromModel($plugin, $fields));
 
         return Plugins\QueryPluginsResponse::from([
             'plugins' => $plugins,

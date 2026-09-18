@@ -68,6 +68,12 @@ readonly class ThemeResponse extends DTO
         public Optional|string $ac_created,
     ) {}
 
+    /** @param array<string, bool>|null $fields Null includes all fields. */
+    public static function fromModel(Theme $theme, null|array $fields = null): static
+    {
+        return static::from(static::fromTheme($theme, $fields));
+    }
+
     /**
      * @param array<string, bool>|null $fields Null preserves the legacy unfiltered response.
      * @return array<string, mixed>

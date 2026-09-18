@@ -14,9 +14,9 @@ class ThemeInformationService
     {
         $theme = Theme::query()->where('slug', $req->slug)->first() or throw new NotFoundException("Theme not found");
         $fields = $req->responseFields();
-        return ThemeResponse::from(ThemeResponse::fromTheme(
+        return ThemeResponse::fromModel(
             $theme,
             $req->apiVersion === '1.0' ? null : $fields,
-        ))->withFields($fields);
+        )->withFields($fields);
     }
 }

@@ -76,6 +76,12 @@ readonly class PluginResponse extends DTO
         public Optional|DateTimeInterface $ac_created,
     ) {}
 
+    /** @param array<string, bool>|null $fields Null includes all fields. */
+    public static function fromModel(Plugin $plugin, null|array $fields = null): static
+    {
+        return static::from(static::fromPlugin($plugin, $fields));
+    }
+
     /**
      * @param array<string, bool>|null $fields Null preserves the legacy unfiltered response.
      * @return array<string, mixed>

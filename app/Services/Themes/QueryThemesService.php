@@ -41,10 +41,10 @@ class QueryThemesService
 
         $fields = $req->responseFields();
         $collection = $themes->map(
-            fn($theme) => ThemeResponse::from(ThemeResponse::fromTheme(
+            fn($theme) => ThemeResponse::fromModel(
                 $theme,
                 $req->apiVersion === '1.0' ? null : $fields,
-            ))->withFields($fields),
+            )->withFields($fields),
         );
 
         return QueryThemesResponse::from(
